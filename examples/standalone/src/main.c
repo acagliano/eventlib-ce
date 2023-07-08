@@ -29,17 +29,24 @@ int main(void)
 {
 	os_ClrLCDFull();
 
-	if(ev_setup(32, malloc)) return 1;
+	if(ev_setup(32, malloc, free)) return 1;
 	
 	size_t ev0 = 22;
-	if(ev_register(EVENT_0, event0_do, &ev0, sizeof(ev0))) return 1;
+	if(ev_register(EVENT_0,
+				   EV_WATCHER_ENABLE | EV_DISABLE_AFTER_RUN,
+				   event0_do, &ev0, sizeof(ev0))) return 1;
 	
-	ev_watch(EVENT_0);
+	//ev_watch(EVENT_0);
 	
 	some_function();
 	
 	ev_handle();
-	
 	os_GetKey();
-	ev_cleanup(free);
+	
+	ev_watch(EVENT_0);
+	some_function();
+	ev_handle();
+	os_GetKey();
+	
+	ev_cleanup();
 }

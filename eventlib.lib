@@ -2,6 +2,7 @@
 
 	export	ev_setup
 	export	ev_register
+	export	ev_unregister
 	export	ev_watch
 	export	ev_unwatch
 	export	ev_trigger
