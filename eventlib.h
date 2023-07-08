@@ -22,7 +22,7 @@ enum _ev_flags {
 };
 
 /**
- @brief Initialzes the events system, allocates an array of structs for registered events, and saves pointer to malloc.
+ @brief Initialzes the events system, allocates an array of structs for registered events, and saves pointer to malloc/free.
  @param max_events	Maximum number of events that can be logged.
  @param malloc		Pointer to toolchain @b malloc function.
  @param free		Pointer to toolchain @b free function.
@@ -52,7 +52,7 @@ ev_status_t ev_register(uint24_t event_id,
 						void *callback_data, size_t callback_data_len);
 
 /**
- @brief Deletes up to @b num the event bindings for a specific event, starting with the earliest.
+ @brief Deletes up to @b num event bindings for a specific event, starting with the earliest.
  @param event_id	Event identifier to delete binding(s) for.
  @param num			Maximum number of bindings to delete.
  @returns 		Return status of deletion.
@@ -91,7 +91,6 @@ ev_status_t ev_handle(void);
 
 /**
  @brief Cleans up allocations performed by eventlib, including all malloced data blocks and the event log.
- @param free	Pointer to toolchain @b free function.
  */
 void ev_cleanup(void);
 

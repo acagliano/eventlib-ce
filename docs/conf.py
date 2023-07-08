@@ -63,4 +63,4 @@ breathe_default_project = 'CryptX'
 breathe_show_define_initializer = True
 breathe_show_enumvalue_initializer = True
 subprocess.call('doxygen doxyfile', shell=True)
-breathe_projects['CryptX'] = 'doxygen/xml'
+breathe_projects['EVENTLIB'] = 'doxygen/xml'
