@@ -1,0 +1,9 @@
+	library	EVENTLIB, 1
+
+	export	ev_setup
+	export	ev_register
+	export	ev_watch
+	export	ev_unwatch
+	export	ev_trigger
+	export	ev_handle
+	export	ev_cleanup
