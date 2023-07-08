@@ -16,10 +16,10 @@
 
 include $(CURDIR)/../common.mk
 
-LIB_SRC			:= cryptx.asm
-LIB_LIB			:= cryptx.lib
-LIB_8XV			:= cryptx.8xv
-LIB_H			:= cryptx.h
+LIB_SRC			:= eventlib.asm
+LIB_LIB			:= eventlib.lib
+LIB_8XV			:= eventlib.8xv
+LIB_H			:= eventlib.h
 LIB_EXAMPLES	:= $(shell ls -d examples/*)
 
 all: $(LIB_8XV)
@@ -41,10 +41,10 @@ $(LIB_EXAMPLES):
 	$(MAKE) clean -C $@
 	$(MAKE) -C $@
 
-archive: cryptx.zip
-cryptx.zip:
-	rm cryptx.zip
-	zip cryptx.zip README.md cryptx.8xv cryptx.lib cryptx.h cryptx.asm
+archive: eventlib.zip
+eventlib.zip:
+	rm eventlib.zip
+	zip eventlib.zip README.md eventlib.8xv eventlib.lib eventlib.h eventlib.asm
 
 
 .PHONY: all clean install examples archive $(LIB_EXAMPLES)
