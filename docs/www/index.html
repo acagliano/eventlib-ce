@@ -238,18 +238,11 @@
 <dd><p>Enables watchers for an event ID. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Enables watchers for all registered events with the same ID. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>If <strong>ev_register</strong> is called with <strong>enable_watcher=True</strong>, you do not need to call this function. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>event_id</strong> – Event ID to enable watchers for. </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Returns status of watcher activation. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -258,16 +251,9 @@
 <dt class="sig sig-object cpp" id="_CPPv410ev_Unwatch7uint8_t">
 <span id="_CPPv310ev_Unwatch7uint8_t"></span><span id="_CPPv210ev_Unwatch7uint8_t"></span><span id="ev_Unwatch__uint8_t"></span><span class="target" id="eventlib_8h_1ac29c2bba1e9d26fa01b706182d7d37e7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ev_Unwatch</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">event_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410ev_Unwatch7uint8_t" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Disables watchers for an event ID. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Disables watchers for all registered events with the same ID. </p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>event_id</strong> – Event ID to disable watchers for. </p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Returns status of watcher deactivation. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -280,9 +266,6 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>event_id</strong> – Informs watcher that indicated event occurred. </p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Returns status of event trigger. </p>
-</dd>
 </dl>
 </dd></dl>
 
@@ -290,11 +273,6 @@
 <dt class="sig sig-object cpp" id="_CPPv415ev_HandleEventsv">
 <span id="_CPPv315ev_HandleEventsv"></span><span id="_CPPv215ev_HandleEventsv"></span><span id="ev_HandleEvents__void"></span><span class="target" id="eventlib_8h_1a1f30b71a4e2f50323b014c304e5c76e9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ev_HandleEvents</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415ev_HandleEventsv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Polls all event watchers and executes callbacks for any events that have occurred. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Returns status of event handler callback execution. </p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="cpp function">

@@ -85,8 +85,6 @@ void ev_PurgeEvent(uint8_t event_id, uint8_t count);
 /**
  @brief Enables watchers for an event ID.
  @param event_id	Event ID to enable watchers for.
- @returns		Returns status of watcher activation.
- @note Enables watchers for all registered events with the same ID.
  @note If @b ev_register is called with @b enable_watcher=True, you do not need to call this function.
  */
 void ev_Watch(uint8_t event_id);
@@ -94,21 +92,18 @@ void ev_Watch(uint8_t event_id);
 /**
  @brief Disables watchers for an event ID.
  @param event_id	Event ID to disable watchers for.
- @returns		Returns status of watcher deactivation.
- @note Disables watchers for all registered events with the same ID.
  */
 void ev_Unwatch(uint8_t event_id);
 
 /**
  @brief Triggers event by ID
  @param event_id	Informs watcher that indicated event occurred.
- @returns 		Returns status of event trigger.
+
  */
 void ev_Trigger(uint8_t event_id);
 
 /**
  @brief Polls all event watchers and executes callbacks for any events that have occurred.
- @returns		Returns status of event handler callback execution.
  */
 void ev_HandleEvents(void);
 
