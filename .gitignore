@@ -1,0 +1,11 @@
+.DS_STORE
+.DS_Store
+.local
+*/obj
+*/bin
+*.8xv
+*.8xg
+*.zip
+
+docs/doxygen
+docs/venv
