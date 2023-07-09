@@ -12,34 +12,39 @@ API Documentation
 .. code-block:: c
 
 	#include <eventlib.h>
-
-
-.. doxygenenum:: ev_status_t
-	:project: EVENTLIB
 	
 .. doxygenenum:: _ev_flags
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_setup
+.. doxygenfunction:: ev_Setup
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_register
+.. doxygenfunction:: ev_RegisterEvent
 	:project: EVENTLIB
 
-.. doxygenfunction:: ev_unregister
+.. doxygenfunction:: ev_UnregisterEvent
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_watch
+.. doxygenfunction:: ev_PurgeEvent
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_unwatch
+.. doxygenfunction:: ev_UpdateCallbackFunction
+	:project: EVENTLIB
+	
+.. doxygenfunction:: ev_UpdateCallbackData
+	:project: EVENTLIB
+	
+.. doxygenfunction:: ev_Watch
+	:project: EVENTLIB
+	
+.. doxygenfunction:: ev_Unwatch
 	:project: EVENTLIB
     
-.. doxygenfunction:: ev_trigger
+.. doxygenfunction:: ev_Trigger
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_handle
+.. doxygenfunction:: ev_HandleEvents
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_cleanup
+.. doxygenfunction:: ev_Cleanup
 	:project: EVENTLIB

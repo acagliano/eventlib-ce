@@ -1,10 +1,13 @@
 	library	EVENTLIB, 1
 
-	export	ev_setup
-	export	ev_register
-	export	ev_unregister
-	export	ev_watch
-	export	ev_unwatch
-	export	ev_trigger
-	export	ev_handle
-	export	ev_cleanup
+	export	ev_Setup
+	export	ev_RegisterEvent
+	export	ev_UnregisterEvent
+	export	ev_UpdateCallbackFunction
+	export	ev_UpdateCallbackData
+	export	ev_PurgeEvent
+	export	ev_Watch
+	export	ev_Unwatch
+	export	ev_Trigger
+	export	ev_HandleEvents
+	export	ev_Cleanup

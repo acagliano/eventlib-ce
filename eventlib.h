@@ -3,15 +3,9 @@
 #define eventlib_h
 
 #include <stdint.h>
+#include <stdbool.h>
 
-/// Defines response codes from calls to the events API.
-typedef enum {
-	EV_OK,
-	EV_INVALID_ARG,
-	EV_THRESHOLD_EXCEEDED,
-	EV_ALLOC_FAILURE,
-	EV_DATABUF_OVERFLOW
-} ev_status_t;
+typedef int event_t;
 
 /// Defines flags that can be passed to @b ev_register.
 enum _ev_flags {
@@ -28,7 +22,7 @@ enum _ev_flags {
  @param free		Pointer to toolchain @b free function.
  @returns			Returns status of events initialization.
  */
-ev_status_t ev_setup(size_t max_events, void* (*malloc)(size_t), void (*free)(void*));
+bool ev_Setup(void* (*malloc)(size_t), void (*free)(void*));
 
 /**
  @brief Registers an event callback bound to a specific event ID, registers any associated data.
@@ -37,7 +31,7 @@ ev_status_t ev_setup(size_t max_events, void* (*malloc)(size_t), void (*free)(vo
  @param callback	Pointer to function to execute if event is triggered.
  @param callback_data	Pointer to data that should be passed to the callback.
  @param callback_data_len	Length of data that should be passed to the callback.
- @returns		Returns status of event registration.
+ @returns		Slot number to which event is bound (for use with unregister and edit callbacks), or -1 for failure.
  @note Functions compatible with this API should bear the following signature:
 	@code void function(void* data, size_t len); @endcode
  @note It is possible to register multiple callbacks to the same event by calling register with the same @b event_id and
@@ -46,18 +40,47 @@ ev_status_t ev_setup(size_t max_events, void* (*malloc)(size_t), void (*free)(vo
 	time the event callback would trigger. @b malloc is used to allocate a buffer for a copy of the callback data and that
 	pointer is placed into the event metadata.
  */
-ev_status_t ev_register(uint24_t event_id,
-						uint8_t ev_flags,
-						void (*callback)(void*, size_t),
-						void *callback_data, size_t callback_data_len);
+event_t ev_RegisterEvent(uint8_t event_id,
+					  uint8_t ev_flags,
+					  void (*callback)(void*, size_t),
+					  void *callback_data, size_t callback_data_len);
 
 /**
- @brief Deletes up to @b num event bindings for a specific event, starting with the earliest.
- @param event_id	Event identifier to delete binding(s) for.
- @param num			Maximum number of bindings to delete.
- @returns 		Return status of deletion.
+ @brief Deletes a specific event registration by slot number.
+ @param ev_slot		Event registration to delete.
+ @returns		Returns status of deletion.
  */
-ev_status_t ev_unregister(uint24_t event_id, size_t num);
+bool ev_UnregisterEvent(event_t ev_slot);
+
+/**
+ @brief Updates the callback function address for the specific event registration.
+ @param ev_slot		Event registration to update.
+ @param callback	New pointer for callback function to update.
+ @returns		Returns status of callback update.
+ */
+bool ev_UpdateCallbackFunction(event_t ev_slot, void (*callback)(void*, size_t));
+
+/**
+ @brief Updates the callback data for specific event registration. Adjusts allocation if necessary.
+ @param ev_slot		Event registration to update.
+ @param callback_data	Pointer to data to replace queued data with.
+ @param callback_data_len	Length of data to overwrite.
+ @param realloc		Pointer to toolchain @b realloc function.
+ @returns		Returns status of callback update.
+ @note Passing @b callback_data_len == 0 should remove any
+	associated data and set internal data pointer to NULL.
+ @note Prior allocation and data should be preserved if new allocation fails.
+ */
+bool ev_UpdateCallbackData(event_t ev_slot,
+						   void* callback_data, size_t callback_data_len,
+						   void* (*realloc)(void*, size_t));
+
+/**
+ @brief Purges up to @b count bindings for an event, starting from the earliest.
+ @param event_id	Event identifier to delete binding(s) for.
+ @param count			Maximum number of bindings to delete.
+ */
+void ev_PurgeEvent(uint8_t event_id, uint8_t count);
 
 /**
  @brief Enables watchers for an event ID.
@@ -66,7 +89,7 @@ ev_status_t ev_unregister(uint24_t event_id, size_t num);
  @note Enables watchers for all registered events with the same ID.
  @note If @b ev_register is called with @b enable_watcher=True, you do not need to call this function.
  */
-ev_status_t ev_watch(uint24_t event_id);
+void ev_Watch(uint8_t event_id);
 
 /**
  @brief Disables watchers for an event ID.
@@ -74,24 +97,24 @@ ev_status_t ev_watch(uint24_t event_id);
  @returns		Returns status of watcher deactivation.
  @note Disables watchers for all registered events with the same ID.
  */
-ev_status_t ev_unwatch(uint24_t event_id);
+void ev_Unwatch(uint8_t event_id);
 
 /**
  @brief Triggers event by ID
  @param event_id	Informs watcher that indicated event occurred.
  @returns 		Returns status of event trigger.
  */
-ev_status_t ev_trigger(uint24_t event_id);
+void ev_Trigger(uint8_t event_id);
 
 /**
  @brief Polls all event watchers and executes callbacks for any events that have occurred.
  @returns		Returns status of event handler callback execution.
  */
-ev_status_t ev_handle(void);
+void ev_HandleEvents(void);
 
 /**
- @brief Cleans up allocations performed by eventlib, including all malloced data blocks and the event log.
+ @brief Cleans up all allocated @b callback_data blocks.
  */
-void ev_cleanup(void);
+void ev_Cleanup(void);
 
 #endif
