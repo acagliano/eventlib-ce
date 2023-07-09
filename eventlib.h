@@ -17,7 +17,6 @@ enum _ev_flags {
 
 /**
  @brief Initialzes the events system, allocates an array of structs for registered events, and saves pointer to malloc/free.
- @param max_events	Maximum number of events that can be logged.
  @param malloc		Pointer to toolchain @b malloc function.
  @param free		Pointer to toolchain @b free function.
  @returns			Returns status of events initialization.
