@@ -1,0 +1,125 @@
+Section          Base   Top    High   Length
+---------------- ------ ------ ------ -------
+.icon            D1A882 D1A99B           119h
+.init.libs       D1A99B D1A9F3            58h
+.libs            D1A9F3 D1AA20            2Dh
+.init.clock      D1AA20 D1AA20             0h
+.init.reruncheck D1AA20 D1AA20             0h
+.init            D1AA20 D1AA4A            2Ah
+.fini            D1AA4A D1AA7E            34h
+.text            D1AA7E D1CA32          1FB4h
+.data            D1CA32 D1CA35             3h
+.rodata          D1CA35 D1CB56           121h
+.init_array      000000 000000             0h
+.ctors           000000 000000             0h
+.dtors           000000 000000             0h
+.fini_array      000000 000000             0h
+.bss             D052C6 D052CC D13FD8      6h
+.header          D1A87F D1A882             3h
+
+Label                         Value
+---------------------------   ------
+___low_bss                  = D052C6
+___len_bss                  = 000006
+___heaptop                  = D13FD8
+___heapbot                  = D052CC
+___libs                     = D1A9F3
+___init_array_count         = 000000
+___ctors_count              = 000000
+___dtors_count              = 000000
+___fini_array_count         = 000000
+__stack                     = D1A87E
+__frameset                  = D1AA7E
+__frameset0                 = D1AA8C
+__iand                      = D1AA97
+__imulu                     = D1AAB0
+__indcallhl                 = D1AAE0
+__ineg                      = D1AAE1
+__ior                       = D1AAEA
+__ishl                      = D1AB03
+__ishru                     = D1AB29
+__ixor                      = D1AB6A
+__ladd                      = D1AB83
+__land                      = D1AB89
+__lcmpu                     = D1ABA4
+__lcmpzero                  = D1ABAC
+__lladd                     = D1ABB4
+__lland                     = D1ABD8
+__llcmpu                    = D1AC15
+__llcmpzero                 = D1AC3F
+__llctlz                    = D1AC54
+__lldivs                    = D1AC6C
+__lldivu                    = D1ACBC
+__lldvrmu                   = D1ACD0
+__lldvrmu.hijack            = D1ACD7
+__llmulu                    = D1AD2E
+__llneg                     = D1AD83
+__llshl                     = D1AD9C
+__llshrs.hijack_llshru      = D1ADCA
+__llshrs.finish             = D1ADE9
+__llshru                    = D1ADED
+__llsub                     = D1AE07
+__lshrs.hijack_lshru        = D1AE35
+__lshru                     = D1AE44
+__fcmp                      = 000274
+__ftol                      = 00027C
+__ftoul                     = 00027C
+__ltof                      = 000284
+__setflag                   = 000218
+__ultof                     = 000280
+_os_DisableHomeTextBuffer   = D1AE54
+_os_EnableHomeTextBuffer    = D1AE66
+_os_ClrLCDFull              = 020808
+_os_GetKey                  = 021D38
+_free                       = D1AE78
+_malloc                     = D1AF35
+__alloc_base                = D052C6
+_npf_vpprintf               = D1AFD4
+JTI0_0                      = D1CA35
+JTI0_1                      = D1CA53
+JTI0_2                      = D1CA98
+JTI0_3                      = D1CAB9
+JTI0_4                      = D1CAD1
+JTI0_5                      = D1CAE9
+_npf_utoa_rev               = D1C73E
+__printf_c                  = D1C806
+__vsnprintf_c               = D1C825
+_npf_bufputc                = D1C888
+_npf_bufputc_nop            = D1C8AD
+__snprintf_c                = D1C8B4
+__vsprintf_c                = D1C8DC
+__vprintf_c                 = D1C8FA
+_npf_putc_std               = D1C91A
+__sprintf_c                 = D1C92A
+_.str                       = D1CB01
+_.str.1                     = D1CB05
+_.str.2                     = D1CB09
+_outchar                    = D1C953
+_printf                     = D1C806
+_vprintf                    = D1C8FA
+_vsnprintf                  = D1C825
+_sbrk                       = D1C969
+__sbrkbase                  = D1CA32
+.missingappvar              = D1CB0D
+.libloadname                = D1CB12
+.libloadnamelen             = 000007
+.webaddress                 = D1CB1A
+__start                     = D1AA20
+___exithl                   = D1AA4A
+skip._exit                  = D1AA4A
+skip.__Exit                 = D1AA4A
+skip._abort                 = D1AA4A
+_exit.sp                    = D1AA4B
+_exit.flash_wait_states     = D1AA55
+_event0_do                  = D1C987
+_event0_do2                 = D1C998
+_main                       = D1C9A9
+_.str                       = D1CB2F
+_.str.1                     = D1CB41
+lib.LibLoad                 = D1A9F3
+_#ev_Setup                  = D1AA08
+_#ev_RegisterEvent          = D1AA0C
+_#ev_UpdateCallbackFunction = D1AA10
+_#ev_Trigger                = D1AA14
+_#ev_HandleEvents           = D1AA18
+_#ev_Cleanup                = D1AA1C
