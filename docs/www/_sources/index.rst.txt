@@ -28,10 +28,7 @@ API Documentation
 .. doxygenfunction:: ev_PurgeEvent
 	:project: EVENTLIB
 	
-.. doxygenfunction:: ev_UpdateCallbackFunction
-	:project: EVENTLIB
-	
-.. doxygenfunction:: ev_UpdateCallbackData
+.. doxygenfunction:: ev_UpdateCallbacks
 	:project: EVENTLIB
 	
 .. doxygenfunction:: ev_Watch

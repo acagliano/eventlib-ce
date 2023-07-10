@@ -3,8 +3,7 @@
 	export	ev_Setup
 	export	ev_RegisterEvent
 	export	ev_UnregisterEvent
-	export	ev_UpdateCallbackFunction
-	export	ev_UpdateCallbackData
+	export	ev_UpdateCallbacks
 	export	ev_PurgeEvent
 	export	ev_Watch
 	export	ev_Unwatch

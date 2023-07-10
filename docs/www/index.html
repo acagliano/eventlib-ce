@@ -136,7 +136,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is possible to register multiple callbacks to the same event by calling register with the same <strong>event_id</strong> and and different callback parameters. </p>
+<p>It is possible to register multiple callbacks to the same event by calling register with the same <strong>event_id</strong> and different callback parameters. </p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -187,42 +187,25 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv425ev_UpdateCallbackFunction7event_tPFvPv6size_tE">
-<span id="_CPPv325ev_UpdateCallbackFunction7event_tPFvPv6size_tE"></span><span id="_CPPv225ev_UpdateCallbackFunction7event_tPFvPv6size_tE"></span><span class="target" id="eventlib_8h_1a9e7151b61b72e2c8eba681f263c4bd73"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ev_UpdateCallbackFunction</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">event_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ev_slot</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">callback</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425ev_UpdateCallbackFunction7event_tPFvPv6size_tE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Updates the callback function address for the specific event registration. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ev_slot</strong> – Event registration to update. </p></li>
-<li><p><strong>callback</strong> – New pointer for callback function to update. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Returns status of callback update. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv421ev_UpdateCallbackData7event_tPv6size_tPFPvPv6size_tE">
-<span id="_CPPv321ev_UpdateCallbackData7event_tPv6size_tPFPvPv6size_tE"></span><span id="_CPPv221ev_UpdateCallbackData7event_tPv6size_tPFPvPv6size_tE"></span><span class="target" id="eventlib_8h_1a49408f67aadb138b14f29e3562368501"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ev_UpdateCallbackData</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">event_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ev_slot</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">callback_data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">callback_data_len</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">realloc</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421ev_UpdateCallbackData7event_tPv6size_tPFPvPv6size_tE" title="Permalink to this definition"></a><br /></dt>
-<dd><p>Updates the callback data for specific event registration. </p>
-<p>Adjusts allocation if necessary. </p>
+<dt class="sig sig-object cpp" id="_CPPv418ev_UpdateCallbacks7event_tPFvPv6size_tEPv6size_tPFPvPv6size_tE">
+<span id="_CPPv318ev_UpdateCallbacks7event_tPFvPv6size_tEPv6size_tPFPvPv6size_tE"></span><span id="_CPPv218ev_UpdateCallbacks7event_tPFvPv6size_tEPv6size_tPFPvPv6size_tE"></span><span class="target" id="eventlib_8h_1af86cd3b4101d8819ff7e88792e1a2146"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ev_UpdateCallbacks</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">event_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ev_slot</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">callback</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">)</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">callback_data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">callback_data_len</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">realloc</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418ev_UpdateCallbacks7event_tPFvPv6size_tEPv6size_tPFPvPv6size_tE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Updates the callback info for the specific event registration. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Passing <strong>callback_data_len</strong> == 0 should remove any associated data and set internal data pointer to NULL. </p>
+<p>Reallocation occurs if passed memory block differs in size from existing block. </p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Prior allocation and data should be preserved if new allocation fails. </p>
+<p>Old callback data is always overwritten with new data if data and length are non-NULL. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ev_slot</strong> – Event registration to update. </p></li>
-<li><p><strong>callback_data</strong> – Pointer to data to replace queued data with. </p></li>
-<li><p><strong>callback_data_len</strong> – Length of data to overwrite. </p></li>
-<li><p><strong>realloc</strong> – Pointer to toolchain <strong>realloc</strong> function. </p></li>
+<li><p><strong>callback</strong> – Pointer to new callback function, or NULL to not update. </p></li>
+<li><p><strong>callback_data</strong> – Pointer to new data to provide to callback, or NULL for no data. </p></li>
+<li><p><strong>callback_data_len</strong> – Length of new data to update, or 0 for no data. </p></li>
+<li><p><strong>realloc</strong> – Pointer to toolchain <strong>realloc</strong> function used to perform any reallocation. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -238,6 +221,10 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If <strong>ev_register</strong> is called with <strong>enable_watcher=True</strong>, you do not need to call this function. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Enabling a watcher only affects events of that type registered up until this point. If you register new events of the same type you must pass them with the <strong>EV_WATCHER_ENABLE</strong> flag or call this function again. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -261,6 +248,10 @@
 <dt class="sig sig-object cpp" id="_CPPv410ev_Trigger7uint8_t">
 <span id="_CPPv310ev_Trigger7uint8_t"></span><span id="_CPPv210ev_Trigger7uint8_t"></span><span id="ev_Trigger__uint8_t"></span><span class="target" id="eventlib_8h_1a80626f681f2a65298b3758b3a0ea4991"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ev_Trigger</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">event_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410ev_Trigger7uint8_t" title="Permalink to this definition"></a><br /></dt>
 <dd><p>Triggers event by ID. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The event will not trigger if watching is not enabled for this event. </p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>event_id</strong> – Informs watcher that indicated event occurred. </p>

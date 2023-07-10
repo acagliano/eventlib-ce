@@ -27,28 +27,47 @@ _event0_do2:
 	section	.text,"ax",@progbits
 	public	_main
 _main:
-	ld	hl, -3
+	ld	hl, -9
 	call	__frameset
 	ld	hl, _malloc
 	ld	de, _free
+	ld	bc, 0
+	ld	(ix - 3), bc
 	push	de
 	push	hl
 	call	_ev_Setup
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	z, BB2_2
-	ld	hl, _event0_do
+	jp	z, BB2_2
+	ld	bc, _event0_do
 	ld	de, 0
-	ld	bc, 0
-	push	bc
+	or	a, a
+	sbc	hl, hl
+	push	hl
 	push	de
+	push	bc
+	inc	de
+	push	de
+	push	hl
+	call	_ev_RegisterEvent
+	ld	(ix - 6), hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	de, 0
+	push	de
+	ld	hl, 0
+	push	hl
+	ld	hl, _event0_do2
 	push	hl
 	ld	hl, 1
 	push	hl
-	push	bc
+	push	de
 	call	_ev_RegisterEvent
-	ld	(ix - 3), hl
+	ld	(ix - 9), hl
 	pop	hl
 	pop	hl
 	pop	hl
@@ -63,11 +82,26 @@ _main:
 	pop	hl
 	call	_ev_HandleEvents
 	call	_os_GetKey
-	ld	hl, _event0_do2
+	ld	iy, -3145600
+	call	_os_ClrLCDFull
+	ld	hl, (ix - 6)
 	push	hl
-	ld	hl, (ix - 3)
+	call	_ev_UnregisterEvent
+	pop	hl
+	ld	hl, _realloc
 	push	hl
-	call	_ev_UpdateCallbackFunction
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	push	hl
+	ld	hl, _event0_do
+	push	hl
+	ld	hl, (ix - 9)
+	push	hl
+	call	_ev_UpdateCallbacks
+	pop	hl
+	pop	hl
+	pop	hl
 	pop	hl
 	pop	hl
 	or	a, a
@@ -77,13 +111,37 @@ _main:
 	pop	hl
 	call	_ev_HandleEvents
 	call	_os_GetKey
+	ld	de, 0
+	push	de
+	ld	hl, 0
+	push	hl
+	ld	hl, _event0_do2
+	push	hl
+	ld	hl, 1
+	push	hl
+	push	de
+	call	_ev_RegisterEvent
+	pop	de
+	pop	de
+	pop	de
+	pop	de
+	pop	de
+	push	hl
+	ld	hl, _.str.2
+	push	hl
+	ld	hl, -327680
+	push	hl
+	call	_sprintf
+	pop	hl
+	pop	hl
+	pop	hl
 	call	_ev_Cleanup
-	or	a, a
-	sbc	hl, hl
 	jr	BB2_3
 BB2_2:
 	ld	hl, 1
+	ld	(ix - 3), hl
 BB2_3:
+	ld	hl, (ix - 3)
 	ld	sp, ix
 	pop	ix
 	ret
@@ -99,18 +157,26 @@ _.str:
 _.str.1:
 	db	10, "event0 #2 triggered", 0
 
+	section	.rodata,"a",@progbits
+	private	_.str.2
+_.str.2:
+	db	"%u", 10, 0
+
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
 	extern	__Unwind_SjLj_Register
 	extern	__Unwind_SjLj_Unregister
 	extern	_printf
 	extern	_malloc
 	extern	__frameset
+	extern	_ev_UpdateCallbacks
 	extern	_ev_Cleanup
 	extern	_ev_RegisterEvent
+	extern	_sprintf
 	extern	_ev_Trigger
-	extern	_ev_UpdateCallbackFunction
 	extern	_ev_HandleEvents
+	extern	_ev_UnregisterEvent
 	extern	_free
+	extern	_realloc
 	extern	__frameset0
 	extern	_ev_Setup
 	extern	_os_ClrLCDFull

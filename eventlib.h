@@ -9,8 +9,8 @@ typedef int event_t;
 
 /// Defines flags that can be passed to @b ev_register.
 enum _ev_flags {
-	EV_WATCHER_ENABLE	= 0b1,		/**< Enables the watcher upon registration, eliminating need for @b ev_watch.*/
-	EV_WATCHER_NOENABLE		= 0,	/**< Does not enable watcher upon registration, @b ev_watch needed to enable.*/
+	EV_WATCHER_ENABLE	= 0b1,		/**< Enables the watcher upon registration, eliminating need for @b ev_Watch.*/
+	EV_WATCHER_NOENABLE		= 0,	/**< Does not enable watcher upon registration, @b ev_Watch needed to enable.*/
 	EV_DISABLE_AFTER_RUN	= 0b10,	/**< Disables watcher for this event binding upon callback completion. */
 	EV_PERSIST_AFTER_RUN	= 0,	/**< Persist the watcher for this event binding upon callback completion. */
 };
@@ -34,7 +34,7 @@ bool ev_Setup(void* (*malloc)(size_t), void (*free)(void*));
  @note Functions compatible with this API should bear the following signature:
 	@code void function(void* data, size_t len); @endcode
  @note It is possible to register multiple callbacks to the same event by calling register with the same @b event_id and
-	and different callback parameters.
+	different callback parameters.
  @note This function passes the data by copy, not by reference, as there is no way to ensure the data is in scope at the
 	time the event callback would trigger. @b malloc is used to allocate a buffer for a copy of the callback data and that
 	pointer is placed into the event metadata.
@@ -52,27 +52,19 @@ event_t ev_RegisterEvent(uint8_t event_id,
 bool ev_UnregisterEvent(event_t ev_slot);
 
 /**
- @brief Updates the callback function address for the specific event registration.
+ @brief Updates the callback info for the specific event registration.
  @param ev_slot		Event registration to update.
- @param callback	New pointer for callback function to update.
+ @param callback	Pointer to new callback function, or NULL to not update.
+ @param callback_data	Pointer to new data to provide to callback, or NULL for no data.
+ @param callback_data_len	Length of new data to update, or 0 for no data.
+ @param realloc		Pointer to toolchain @b realloc function used to perform any reallocation.
+ @note Reallocation occurs if passed memory block differs in size from existing block.
+ @note Old callback data is always overwritten with new data if data and length are non-NULL.
  @returns		Returns status of callback update.
  */
-bool ev_UpdateCallbackFunction(event_t ev_slot, void (*callback)(void*, size_t));
-
-/**
- @brief Updates the callback data for specific event registration. Adjusts allocation if necessary.
- @param ev_slot		Event registration to update.
- @param callback_data	Pointer to data to replace queued data with.
- @param callback_data_len	Length of data to overwrite.
- @param realloc		Pointer to toolchain @b realloc function.
- @returns		Returns status of callback update.
- @note Passing @b callback_data_len == 0 should remove any
-	associated data and set internal data pointer to NULL.
- @note Prior allocation and data should be preserved if new allocation fails.
- */
-bool ev_UpdateCallbackData(event_t ev_slot,
-						   void* callback_data, size_t callback_data_len,
-						   void* (*realloc)(void*, size_t));
+bool ev_UpdateCallbacks(event_t ev_slot, void (*callback)(void*, size_t),
+							   void* callback_data, size_t callback_data_len,
+							   void* (*realloc)(void*, size_t));
 
 /**
  @brief Purges up to @b count bindings for an event, starting from the earliest.
@@ -85,6 +77,9 @@ void ev_PurgeEvent(uint8_t event_id, uint8_t count);
  @brief Enables watchers for an event ID.
  @param event_id	Event ID to enable watchers for.
  @note If @b ev_register is called with @b enable_watcher=True, you do not need to call this function.
+ @note Enabling a watcher only affects events of that type registered up until this point. If you register new
+	events of the same type you must pass them with the @b EV_WATCHER_ENABLE flag or call this
+	function again.
  */
 void ev_Watch(uint8_t event_id);
 
@@ -97,6 +92,7 @@ void ev_Unwatch(uint8_t event_id);
 /**
  @brief Triggers event by ID
  @param event_id	Informs watcher that indicated event occurred.
+ @note The event will not trigger if watching is not enabled for this event.
 
  */
 void ev_Trigger(uint8_t event_id);
